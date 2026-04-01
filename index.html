@@ -3,100 +3,393 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manikandan | Embedded Engineer</title>
+<title>Manikandan P | Embedded Engineer</title>
 
 <style>
+:root {
+    --bg-1: #07111f;
+    --bg-2: #0d1b2a;
+    --panel: rgba(15, 23, 42, 0.55);
+    --panel-strong: rgba(15, 23, 42, 0.78);
+    --border: rgba(148, 163, 184, 0.18);
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #67e8f9;
+    --accent-2: #38bdf8;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #0f172a;
-    color: white;
+    color: var(--text);
+    line-height: 1.7;
+    background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(103, 232, 249, 0.16), transparent 24%),
+        radial-gradient(circle at bottom center, rgba(59, 130, 246, 0.12), transparent 30%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, #050b14 100%);
+    min-height: 100vh;
 }
 
-/* NAVBAR */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    opacity: 0.22;
+}
+
 nav {
+    position: sticky;
+    top: 18px;
+    z-index: 100;
+    width: min(1180px, calc(100% - 32px));
+    margin: 18px auto 0;
+    padding: 16px 24px;
     display: flex;
     justify-content: space-between;
-    padding: 20px 50px;
-    background: #020617;
-    position: sticky;
-    top: 0;
+    align-items: center;
+    background: rgba(9, 15, 27, 0.62);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
 }
 
 nav h2 {
-    color: #38bdf8;
+    color: #f8fafc;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
 }
 
-nav a {
-    color: white;
-    margin-left: 20px;
+nav div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav div a {
+    color: var(--muted);
     text-decoration: none;
+    transition: 0.3s ease;
+    font-weight: 500;
 }
 
-/* HERO */
+nav div a:hover {
+    color: var(--accent);
+}
+
 .hero {
+    width: min(1180px, calc(100% - 32px));
+    margin: 26px auto 0;
+    padding: 110px 56px 90px;
     text-align: center;
-    padding: 100px 20px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.42));
+    border: 1px solid rgba(103, 232, 249, 0.16);
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(18px);
+    opacity: 0.7;
+}
+
+.hero::before {
+    width: 220px;
+    height: 220px;
+    top: -60px;
+    left: -40px;
+    background: rgba(56, 189, 248, 0.22);
+}
+
+.hero::after {
+    width: 240px;
+    height: 240px;
+    right: -70px;
+    bottom: -80px;
+    background: rgba(103, 232, 249, 0.16);
 }
 
 .hero h1 {
-    font-size: 50px;
-    color: #38bdf8;
+    font-size: clamp(42px, 7vw, 72px);
+    color: #f8fafc;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
 }
 
 .hero p {
-    margin-top: 10px;
-    font-size: 18px;
+    max-width: 820px;
+    margin: 0 auto;
+    font-size: 21px;
+    color: #cbd5e1;
 }
 
-/* SECTION */
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #04111d;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 12px 30px rgba(56, 189, 248, 0.24);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px rgba(56, 189, 248, 0.32);
+}
+
 section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
+    width: min(1180px, calc(100% - 32px));
+    margin: 28px auto 0;
+    padding: 42px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
 }
 
-/* CARDS */
+section h2 {
+    font-size: 34px;
+    color: #f8fafc;
+    margin-bottom: 26px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 72%;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+section p {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+.highlight-section {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.72), rgba(14, 116, 144, 0.16));
+    border: 1px solid rgba(103, 232, 249, 0.18);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 26px;
+}
+
+.skill-tag {
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(103, 232, 249, 0.14);
+    padding: 14px 18px;
+    border-radius: 18px;
+    text-align: center;
+    font-weight: 600;
+    color: #e0f2fe;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-5px);
+    border-color: rgba(103, 232, 249, 0.42);
+    background: rgba(20, 33, 61, 0.9);
+}
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-top: 24px;
 }
 
 .card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
-    transition: 0.3s;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.55));
+    padding: 28px;
+    border-radius: 22px;
+    border: 1px solid rgba(103, 232, 249, 0.14);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 12px 28px rgba(2, 6, 23, 0.28);
+}
+
+.card h3 {
+    color: #f8fafc;
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p {
+    color: #cbd5e1;
+    margin-bottom: 16px;
+}
+
+.card strong {
+    color: var(--accent);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    background: #334155;
+    transform: translateY(-8px);
+    border-color: rgba(103, 232, 249, 0.35);
+    box-shadow: 0 18px 40px rgba(56, 189, 248, 0.12);
 }
 
-/* BUTTON */
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #38bdf8;
-    color: black;
-    border-radius: 8px;
-    text-decoration: none;
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-top: 26px;
 }
 
-/* FOOTER */
+.tool-card {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.58));
+    border: 1px solid rgba(103, 232, 249, 0.14);
+    border-radius: 22px;
+    padding: 28px;
+}
+
+.tool-card h3 {
+    color: #f8fafc;
+    margin-bottom: 16px;
+    font-size: 20px;
+}
+
+.tool-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tool-card li {
+    padding: 9px 0;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.tool-card li:last-child {
+    border-bottom: none;
+}
+
+.contact-info {
+    background: var(--panel-strong);
+    padding: 30px;
+    border-radius: 22px;
+    margin-top: 28px;
+    border: 1px solid rgba(103, 232, 249, 0.16);
+}
+
+.contact-info p {
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+.contact-info strong {
+    color: var(--accent);
+}
+
 footer {
+    width: min(1180px, calc(100% - 32px));
+    margin: 28px auto 32px;
     text-align: center;
-    padding: 20px;
-    background: #020617;
-    margin-top: 40px;
+    padding: 28px 20px;
+    background: rgba(9, 15, 27, 0.62);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+}
+
+.social-links {
+    margin: 12px 0 18px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 12px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    nav {
+        top: 10px;
+        padding: 14px 18px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 90px 24px 70px;
+    }
+
+    section {
+        padding: 30px 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav div {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav div a {
+        font-size: 14px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    section h2 {
+        font-size: 28px;
+    }
 }
 </style>
 </head>
@@ -104,54 +397,175 @@ footer {
 <body>
 
 <nav>
-    <h2>Manikandan</h2>
+    <h2>Manikandan P</h2>
     <div>
+        <a href="#objective">Objective</a>
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#tools">Tools & IDEs</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
 
 <div class="hero">
-    <h1>Embedded Engineer</h1>
-    <p>STM32 | CAN | Sensors | EEPROM</p>
-    <a class="btn" href="#projects">View My Work</a>
+    <h1>Embedded Developer</h1>
+    <p>Multidisciplinary Embedded Engineer skilled in firmware, electronics, communication interfaces, and system-level problem solving</p>
+    <a class="btn" href="#projects">Explore My Work</a>
 </div>
+
+<section id="objective" class="highlight-section">
+    <h2>Objective</h2>
+    <p style="font-size: 18px; font-weight: 500;">To secure a challenging position as an embedded systems engineer where I can apply my skills in firmware development, hardware integration, communication interfaces, testing, and system-level problem solving to build reliable and efficient products.</p>
+</section>
 
 <section id="about">
     <h2>About Me</h2>
-    <p>I design and develop embedded systems using STM32, working with sensors, CAN communication, and flash-based EEPROM solutions.</p>
+    <p>I'm an embedded systems engineer with hands-on experience in firmware development, hardware integration, communication interfaces, testing, and product development. I have worked on a wide range of embedded applications including power electronics, vending machines, display systems, battery management, industrial controls, and connected devices. My focus is on building reliable, efficient, and practical solutions for real-world products.</p>
+</section>
+
+<section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-tag">Embedded C</div>
+        <div class="skill-tag">8/16/32-Bit MCU</div>
+        <div class="skill-tag">ADC & Timer</div>
+        <div class="skill-tag">PWM</div>
+        <div class="skill-tag">Flash & EEPROM</div>
+        <div class="skill-tag">UART Communication</div>
+        <div class="skill-tag">IIC Communication</div>
+        <div class="skill-tag">7-Segment Display</div>
+        <div class="skill-tag">Graphical Display</div>
+        <div class="skill-tag">SMD Soldering</div>
+        <div class="skill-tag">Hardware Design</div>
+        <div class="skill-tag">Schematic Design</div>
+        <div class="skill-tag">Hardware Troubleshooting</div>
+        <div class="skill-tag">Software & HW Testing</div>
+        <div class="skill-tag">Python (Basic)</div>
+        <div class="skill-tag">Kivy (Basic)</div>
+    </div>
 </section>
 
 <section id="projects">
-    <h2>Projects</h2>
+    <h2>Project Experience</h2>
     <div class="grid">
-
         <div class="card">
-            <h3>Pressure Detection</h3>
-            <p>Dome open/close detection using pressure sensor logic.</p>
+            <h3>Smart Power Switch</h3>
+            <p>Automotive product that limits inrush (transient) current during load startup by controlling a MOSFET switch based on real-time current feedback. Capable of driving 400A continuous DC current with short circuit protection, overcurrent protection, temperature cutoff, and battery voltage detection. Features CAN communication for data exchange.</p>
+            <strong>Tech:</strong> STM32, CAN Bus, MOSFET Control, Current Sensing
         </div>
 
         <div class="card">
-            <h3>CAN Communication</h3>
-            <p>FDCAN implementation with error handling.</p>
+            <h3>Solar Trickle Charger</h3>
+            <p>Low power system designed to maintain the charge of 12V lead-acid and lithium batteries using solar energy. Provides sustainable and maintenance-free solution for vehicle batteries by compensating for self-discharge and small load consumption over time.</p>
+            <strong>Tech:</strong> Solar Power Management, PWM, Battery Monitoring
         </div>
 
         <div class="card">
-            <h3>EEPROM Emulation</h3>
-            <p>Flash memory based EEPROM system.</p>
+            <h3>WiFi & GSM Cashless Device</h3>
+            <p>Embedded software for cashless payment device integration with snack vending machines. Enables online payments and product selection via mobile interface. Implements MDB protocol for communication between cashless device and vending machine controller. WiFi and GSM modules provide internet connectivity to server.</p>
+            <strong>Tech:</strong> WiFi, GSM, MDB Protocol, Payment Integration
         </div>
 
+        <div class="card">
+            <h3>MDB to RS232 Communication Board</h3>
+            <p>Interface board for seamless communication between vending machine controller and credit card reader using MDB protocol. Ensures reliable data exchange and protocol conversion.</p>
+            <strong>Tech:</strong> MDB Protocol, RS232, Communication Interface
+        </div>
+
+        <div class="card">
+            <h3>Dosing Pump Controller</h3>
+            <p>Software control system for chemical dosing pump valve based on input current (4-20mA). Provides output feedback for voltage and current monitoring with precise dosing control.</p>
+            <strong>Tech:</strong> Analog Input Processing, 4-20mA Current Loop, PWM Control
+        </div>
+
+        <div class="card">
+            <h3>Coffee/Tea Vending Machine</h3>
+            <p>Complete embedded software solution handling all vending machine activities including touch display interface, heating control, water refill management, short circuit/overload protection, product dispensing, drink enable/disable, and PWM speed controls.</p>
+            <strong>Tech:</strong> Touch Display, Temperature Control, PWM, Safety Protection
+        </div>
+
+        <div class="card">
+            <h3>Four Card Dispenser Machine</h3>
+            <p>Modified software for card dispensing functionality integrated with coin mechanism and bill acceptor. Detects credits and executes card dispensing based on user selection.</p>
+            <strong>Tech:</strong> Coin/Bill Detection, Card Dispensing, User Interface
+        </div>
+
+        <div class="card">
+            <h3>Milk Tank Cleaner & Data Logger</h3>
+            <p>Software for controlling loads based on temperature monitoring and sending log data to server via 4G modem. Ensures proper temperatures and maintains comprehensive records.</p>
+            <strong>Tech:</strong> Temperature Monitoring, 4G Modem, Data Logging
+        </div>
+
+        <div class="card">
+            <h3>TFT Display Interface</h3>
+            <p>TFT display integration with microcontroller featuring dynamic QR code generation and display. Provides high-quality graphical interface for various applications.</p>
+            <strong>Tech:</strong> TFT Display, QR Code Generation, Graphics Processing
+        </div>
+    </div>
+</section>
+
+<section id="tools">
+    <h2>IDEs & Development Tools</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <h3>Integrated Development Environments</h3>
+            <ul>
+                <li>✓ Keil µVision</li>
+                <li>✓ High-Performance Embedded Workshop</li>
+                <li>✓ Renesas Cubesuit CS+</li>
+                <li>✓ Code Composer Studio</li>
+                <li>✓ HT-IDE3000</li>
+                <li>✓ Arduino IDE</li>
+            </ul>
+        </div>
+
+        <div class="tool-card">
+            <h3>Tools & Analyzers</h3>
+            <ul>
+                <li>✓ Microchip CAN Bus Analyzer</li>
+                <li>✓ Vector Tools (CANoe)</li>
+                <li>✓ Docklight Serial Terminal</li>
+                <li>✓ KiCAD (Circuit Design)</li>
+                <li>✓ NI Multisim (Simulation)</li>
+                <li>✓ Stone Display Tools</li>
+            </ul>
+        </div>
+
+        <div class="tool-card">
+            <h3>Measuring & Version Control</h3>
+            <ul>
+                <li>✓ Oscilloscope (MSO & DSO)</li>
+                <li>✓ Multimeter</li>
+                <li>✓ Clamp Meter</li>
+                <li>✓ SVN Version Control</li>
+            </ul>
+        </div>
     </div>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: yourmail@example.com</p>
+    <h2>Get In Touch</h2>
+    <p>I'm always open to discussing new projects, exciting technologies, and opportunities in embedded systems.</p>
+
+    <div class="contact-info">
+        <p><strong>Email:</strong> manikandan.p@example.com</p>
+        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+        <p><strong>Location:</strong> San Francisco, CA, USA</p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/manikandan-p</p>
+        <p><strong>GitHub:</strong> github.com/manikandan-p</p>
+    </div>
+
+    <a class="btn" href="mailto:manikandan.p@example.com">Send Me an Email</a>
 </section>
 
 <footer>
-    <p>© 2026 Manikandan</p>
+    <div class="social-links">
+        <a href="https://github.com">GitHub</a>
+        <a href="https://linkedin.com">LinkedIn</a>
+        <a href="https://twitter.com">Twitter</a>
+    </div>
+    <p>© 2026 Manikandan | Embedded Systems Engineer</p>
 </footer>
 
 </body>
