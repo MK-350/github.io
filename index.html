@@ -1,78 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Manikandan | Embedded Engineer</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            background: #0f172a;
-            color: white;
-        }
-        header {
-            background: #020617;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-            color: #38bdf8;
-        }
-        section {
-            padding: 40px;
-        }
-        .card {
-            background: #1e293b;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #020617;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manikandan | Embedded Engineer</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: white;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: #020617;
+    position: sticky;
+    top: 0;
+}
+
+nav h2 {
+    color: #38bdf8;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    color: #38bdf8;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* CARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: #334155;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #38bdf8;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #020617;
+    margin-top: 40px;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>Manikandan</h1>
-    <p>Embedded Systems Engineer | STM32 | CAN | EEPROM</p>
-</header>
+<nav>
+    <h2>Manikandan</h2>
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-<section>
+<div class="hero">
+    <h1>Embedded Engineer</h1>
+    <p>STM32 | CAN | Sensors | EEPROM</p>
+    <a class="btn" href="#projects">View My Work</a>
+</div>
+
+<section id="about">
     <h2>About Me</h2>
-    <div class="card">
-        <p>I work on STM32 microcontrollers, CAN communication, EEPROM emulation, and sensor-based systems.</p>
-    </div>
+    <p>I design and develop embedded systems using STM32, working with sensors, CAN communication, and flash-based EEPROM solutions.</p>
 </section>
 
-<section>
+<section id="projects">
     <h2>Projects</h2>
+    <div class="grid">
 
-    <div class="card">
-        <h3>Pressure Detection System</h3>
-        <p>STM32-based system to detect dome open/close using pressure sensors.</p>
+        <div class="card">
+            <h3>Pressure Detection</h3>
+            <p>Dome open/close detection using pressure sensor logic.</p>
+        </div>
+
+        <div class="card">
+            <h3>CAN Communication</h3>
+            <p>FDCAN implementation with error handling.</p>
+        </div>
+
+        <div class="card">
+            <h3>EEPROM Emulation</h3>
+            <p>Flash memory based EEPROM system.</p>
+        </div>
+
     </div>
-
-    <div class="card">
-        <h3>CAN Bus Communication</h3>
-        <p>Implemented FDCAN communication with error handling and debugging.</p>
-    </div>
-
-    <div class="card">
-        <h3>EEPROM Emulation</h3>
-        <p>Flash-based EEPROM system using STM32 internal memory.</p>
-    </div>
-
 </section>
 
-<section>
+<section id="contact">
     <h2>Contact</h2>
-    <div class="card">
-        <p>Email: yourmail@example.com</p>
-    </div>
+    <p>Email: yourmail@example.com</p>
 </section>
 
 <footer>
